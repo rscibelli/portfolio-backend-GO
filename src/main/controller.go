@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-
 	http.HandleFunc("/trump-quote", GetDumbQuote)
 
 	fmt.Println("Starting server at port 8080")
