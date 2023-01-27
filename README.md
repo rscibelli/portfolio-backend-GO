@@ -10,11 +10,11 @@
 
 ### Run from scratch
 
-`docker run -p 8080:8080 backend`
+`docker run -p 8080:8080 backend &`
 
 ### Run existing
 
-`docker start <container name>`
+`docker start <container name> &`
 
 ### My networks public IP
 
