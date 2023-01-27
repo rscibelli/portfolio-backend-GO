@@ -23,3 +23,7 @@
 ### Enter into bash of container
 
 `docker exec -it <container name> /bin/bash`
+
+### Chcek if Docker is running on pi
+
+`systemctl status docker`
