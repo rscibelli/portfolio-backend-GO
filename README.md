@@ -14,4 +14,12 @@
 
 ### Run existing
 
-`docker start interesting_shamir` (this is my current container)
+`docker start <container name>`
+
+### My networks public IP
+
+`24.60.191.54`
+
+### Enter into bash of container
+
+`docker exec -it <container name> /bin/bash`
