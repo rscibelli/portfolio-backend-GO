@@ -18,6 +18,6 @@ func main() {
 }
 
 func HelloWorld(w http.ResponseWriter, r *http.Request) {
-	msg := "Hello World!"
+	msg := "Hello there, World!"
 	fmt.Fprintf(w, string(msg))
 }

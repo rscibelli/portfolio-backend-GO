@@ -10,7 +10,7 @@
 
 ### Run from scratch
 
-`docker run -d -p 8080:8080 --name backend-GO backend`
+`docker run -d -p 8080:8080 --name backend backend-build`
 
 ### Run existing
 
