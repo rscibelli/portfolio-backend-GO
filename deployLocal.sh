@@ -1,4 +1,6 @@
-sshpass -p ****** ssh pi@10.0.0.251 << EOF
+export $( grep -vE "^(#.*|\s*)$" .env )
+
+sshpass -p ${ssh_pass} ssh pi@10.0.0.251 << EOF
     docker stop backend
     docker rm backend
     docker rmi backend-build
