@@ -1,4 +1,4 @@
-sshpass -p pi ssh pi@24.60.191.54 << EOF
+sshpass -p ******* ssh pi@24.60.191.54 << EOF
     docker stop backend
     docker rm backend
     docker rmi backend-build
