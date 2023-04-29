@@ -11,7 +11,7 @@ import (
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 
-	router.HandleFunc("/", HelloWorld)
+	http.HandleFunc("/", HelloWorld)
 
 	// router.HandleFunc("/trump-quote", GetDumbQuote)
 
