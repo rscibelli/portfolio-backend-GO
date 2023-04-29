@@ -10,6 +10,8 @@ COPY src/main/*.go ./
 
 RUN go build -o /docker-gs-ping
 
+COPY ../../persistentFiles/weddingSongs weddingSongs
+
 EXPOSE 8080
 
 CMD [ "/docker-gs-ping" ]
