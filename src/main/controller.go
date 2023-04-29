@@ -11,9 +11,9 @@ import (
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 
-	http.HandleFunc("/", HelloWorld)
+	// http.HandleFunc("/", HelloWorld)
 
-	// router.HandleFunc("/trump-quote", GetDumbQuote)
+	// http.HandleFunc("/quote", GetDumbQuote)
 
 	router.HandleFunc("/song-request", createSongRequest).Methods("POST")
 
@@ -31,7 +31,6 @@ func HelloWorld(w http.ResponseWriter, r *http.Request) {
 }
 
 func createSongRequest(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("here")
 	createSongRequest(w, r)
 }
 
