@@ -12,7 +12,7 @@ RUN go mod tidy
 
 RUN go build -o /docker-gs-ping
 
-COPY ../../persistentFiles/weddingSongs weddingSongs
+COPY weddingSongs weddingSongs
 
 EXPOSE 8080
 
