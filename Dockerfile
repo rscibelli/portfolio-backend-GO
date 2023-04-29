@@ -8,6 +8,8 @@ RUN go mod download
 
 COPY src/main/*.go ./
 
+RUN go mod tidy
+
 RUN go build -o /docker-gs-ping
 
 COPY ../../persistentFiles/weddingSongs weddingSongs
