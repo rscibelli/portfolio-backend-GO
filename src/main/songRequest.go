@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	ws = "weddingSongs"
+	ws = "files/weddingSongs"
 	// ws = "songTest"
 )
 

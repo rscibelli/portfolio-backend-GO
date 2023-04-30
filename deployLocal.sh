@@ -7,7 +7,7 @@ sshpass -p ${ssh_pass} ssh pi@10.0.0.251 << EOF
     cd repositories/portfolio-backend-GO
     git pull
     docker build -t backend-build .
-    docker run -d -p 8080:8080 --name backend backend-build
+    docker run -d -p 8080:8080 --name backend -v files:/app/files backend-build
     docker image ls
     docker container ls
 EOF
