@@ -12,8 +12,6 @@ RUN go mod tidy
 
 RUN go build -o /docker-gs-ping
 
-COPY weddingSongs weddingSongs
-
 EXPOSE 8080
 
 CMD [ "/docker-gs-ping" ]
