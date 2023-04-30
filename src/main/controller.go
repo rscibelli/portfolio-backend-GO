@@ -31,7 +31,7 @@ func HelloWorld(w http.ResponseWriter, r *http.Request) {
 }
 
 func createSongRequest(w http.ResponseWriter, r *http.Request) {
-	createSongRequest(w, r)
+	CreateSongRequest(w, r)
 }
 
 func getSongRequests(w http.ResponseWriter, r *http.Request) {
