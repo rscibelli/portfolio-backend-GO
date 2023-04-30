@@ -5,11 +5,16 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
+
+	headersOk := handlers.AllowedHeaders([]string{"Access-Control-Allow-Origin"})
+	originsOk := handlers.AllowedOrigins([]string{"http://10.0.0.251:3000"})
+	methodsOk := handlers.AllowedMethods([]string{"GET", "POST"})
 
 	// http.HandleFunc("/", HelloWorld)
 
@@ -20,7 +25,7 @@ func main() {
 	router.HandleFunc("/song-request", getSongRequests).Methods("GET")
 
 	fmt.Println("Starting server at port 8080")
-	if err := http.ListenAndServe(":8080", router); err != nil {
+	if err := http.ListenAndServe(":8080", handlers.CORS(originsOk, headersOk, methodsOk)(router)); err != nil {
 		log.Fatal(err)
 	}
 }
