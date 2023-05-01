@@ -16,7 +16,7 @@ func main() {
 	router.HandleFunc("/song-request", GetSongRequests).Methods("GET")
 
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://10.0.0.251:3000", "http://localhost:3000"},
+		AllowedOrigins:   []string{"*"},
 		AllowCredentials: true,
 	})
 
