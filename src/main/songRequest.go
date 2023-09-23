@@ -2,16 +2,18 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
+	"reflect"
 	"strings"
 )
 
 const (
 	ws = "files/weddingSongs"
-	// ws = "songTest"
 )
 
 func CreateSongRequest(w http.ResponseWriter, r *http.Request) {
@@ -62,4 +64,37 @@ func GetSongRequests(w http.ResponseWriter, r *http.Request) {
 
 	songs := Songs{s}
 	json.NewEncoder(w).Encode(songs)
+}
+
+func DeleteSongRequest(w http.ResponseWriter, r *http.Request) {
+	params := r.URL.Query()
+	song := params.Get("song")
+
+	var bs []byte
+	buf := bytes.NewBuffer(bs)
+
+	f, err := os.OpenFile(ws, os.O_RDWR|os.O_CREATE, 0755)
+	if err != nil {
+		json.NewEncoder(w).Encode("error opening file")
+		return
+	}
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		songArr := strings.Split(scanner.Text(), "--")
+		if !reflect.DeepEqual(songArr[0], song) {
+			buf.WriteString(scanner.Text() + "\n")
+		}
+	}
+
+	f.Truncate(0)
+	f.Seek(0, 0)
+	_, err = buf.WriteTo(f)
+	if err != nil {
+		fmt.Fprintf(w, "Error: "+err.Error())
+		return
+	}
+
+	fmt.Fprintf(w, song+" successfully deleted")
 }

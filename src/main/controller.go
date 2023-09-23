@@ -14,6 +14,7 @@ func main() {
 
 	router.HandleFunc("/song-request", CreateSongRequest).Methods("POST")
 	router.HandleFunc("/song-request", GetSongRequests).Methods("GET")
+	router.HandleFunc("/delete-song", DeleteSongRequest).Methods("GET")
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"},
@@ -26,9 +27,4 @@ func main() {
 	if err := http.ListenAndServe(":8080", handler); err != nil {
 		log.Fatal(err)
 	}
-}
-
-func HelloWorld(w http.ResponseWriter, r *http.Request) {
-	msg := "Hello there, World!"
-	fmt.Fprintf(w, string(msg))
 }
